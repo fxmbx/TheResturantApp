@@ -14,7 +14,7 @@ namespace ResturantServices.ShoppingCartAPI.Controllers
         private readonly ICartRepo icarRepo;
         public CartController(ICartRepo _icartRepo)
         {
-            icartRepo = _icartRepo
+            icartRepo = _icartRepo;
         }
 
         [HttpGet("GetCart/{id}")]
@@ -24,7 +24,7 @@ namespace ResturantServices.ShoppingCartAPI.Controllers
             var response = new ServiceResponse<CartDto>();
             try
             {
-                response = await iproduct.GetCartByUserId(userId);
+                response = await icartRepo.GetCartByUserId(userId);
                 if (response.Success)
                 {
                     return Ok(response);
@@ -47,7 +47,7 @@ namespace ResturantServices.ShoppingCartAPI.Controllers
             var response = new ServiceResponse<CartDto>();
             try
             {
-                response = await iproduct.CreateUpdateCart(cartDto);
+                response = await icartRepo.CreateUpdateCart(cartDto);
                 if (response.Success)
                 {
                     return Ok(response);
@@ -69,7 +69,7 @@ namespace ResturantServices.ShoppingCartAPI.Controllers
             var response = new ServiceResponse<CartDto>();
             try
             {
-                response = await iproduct.CreateUpdateCart(cartDto);
+                response = await icartRepo.CreateUpdateCart(cartDto);
                 if (response.Success)
                 {
                     return Ok(response);
@@ -92,7 +92,7 @@ namespace ResturantServices.ShoppingCartAPI.Controllers
             var response = new ServiceResponse<bool>();
             try
             {
-                response = await iproduct.RemoveFromCart(cartId);
+                response = await icartRepo.RemoveFromCart(cartId);
                 if (response.Success)
                 {
                     return Ok(response);
@@ -115,7 +115,7 @@ namespace ResturantServices.ShoppingCartAPI.Controllers
             var response = new ServiceResponse<bool>();
             try
             {
-                response = await iproduct.ClearCart(userId);
+                response = await icartRepo.ClearCart(userId);
                 if (response.Success)
                 {
                     return Ok(response);

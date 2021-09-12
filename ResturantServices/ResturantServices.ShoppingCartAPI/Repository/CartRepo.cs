@@ -106,14 +106,14 @@ namespace ResturantServices.ShoppingCartAPI.Repository
             ServiceResponse<bool> response = new ServiceResponse<bool>();
             try
             {
-               CartDetails cartDetails = await dbContext.FirstOrDefaultAsync(x=>
+               CartDetails cartDetails = await dbContext.CartDetails.FirstOrDefaultAsync(x=>
                                                 x.CartDetailsId == cartDetailsid);
                 int totalCountOfCartItem = dbContext.CartDetails.Where(x=>
                                             x.CartHeaderId == cartDetails.CartHeaderId).Count();
                 dbContext.CartDetails.Remove(cartDetails);
                 if(totalCountOfCartItem == 1)
                 {
-                    var cartHeaderToRemove = await dbContext.CartHeader.FirstOrDefaultAsync(x
+                    var cartHeaderToRemove = await dbContext.CartHeaders.FirstOrDefaultAsync(x =>
                                                     x.CartHeaderId == cartDetails.CartHeaderId);
                     dbContext.CartHeaders.Remove(cartHeaderToRemove);                    
                 }   
@@ -141,7 +141,7 @@ namespace ResturantServices.ShoppingCartAPI.Repository
                    dbContext.CartDetails.RemoveRange(dbContext.CartDetails.Where(x=>
                     x.CartHeaderId == cartHeaderFromDb.CartHeaderId));
                     dbContext.CartHeaders.Remove(cartHeaderFromDb);
-                    dbContext.CartHeader.SaveChangesAsync();
+                    dbContext.CartHeaders.SaveChangesAsync();
                     return response.Data = true;
                }
                return response.Data=false;
