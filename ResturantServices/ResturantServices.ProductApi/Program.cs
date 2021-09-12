@@ -24,7 +24,7 @@ builder.Services.AddControllers();
 builder.Services.AddAuthentication("Bearer")
         .AddJwtBearer("Bearer", x=>
         {
-            x.Authority = "https://localhost:4774";
+            x.Authority = "https://localhost:44305"; //ssl port of identiy server api
             x.RequireHttpsMetadata = false;
             
             x.TokenValidationParameters = new TokenValidationParameters
