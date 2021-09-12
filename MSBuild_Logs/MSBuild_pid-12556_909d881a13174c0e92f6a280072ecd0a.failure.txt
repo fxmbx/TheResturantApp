@@ -1,0 +1,28 @@
+UNHANDLED EXCEPTIONS FROM PROCESS 12556:
+=====================
+9/1/2021 5:17:05 PM
+Microsoft.Build.Exceptions.InternalLoggerException: The build stopped unexpectedly because of an unexpected logger failure.
+ ---> Microsoft.Build.Exceptions.InternalLoggerException: The build stopped unexpectedly because of an unexpected logger failure.
+ ---> System.IO.IOException: No process is on the other end of the pipe.
+   at System.ConsolePal.WindowsConsoleStream.Write(ReadOnlySpan`1 buffer) in System.Console.dll:token 0x60000f6+0x16
+   at System.IO.StreamWriter.Flush(Boolean flushStream, Boolean flushEncoder) in System.Private.CoreLib.dll:token 0x600608f+0xf0
+   at System.IO.StreamWriter.Write(String value) in System.Private.CoreLib.dll:token 0x6006099+0x0
+   at System.IO.TextWriter.SyncTextWriter.Write(String value) in System.Private.CoreLib.dll:token 0x600617a+0x0
+   at Microsoft.Build.BackEnd.Logging.ParallelConsoleLogger.WriteMessageAligned(String message, Boolean prefixAlreadyWritten, Int32 prefixAdjustment) in Microsoft.Build.dll:token 0x60018e5+0xc3
+   at Microsoft.Build.BackEnd.Logging.ParallelConsoleLogger.ErrorHandler(Object sender, BuildErrorEventArgs e) in Microsoft.Build.dll:token 0x60018dc+0x93
+   at Microsoft.Build.BackEnd.Logging.EventSourceSink.RaiseErrorEvent(Object sender, BuildErrorEventArgs buildEvent) in Microsoft.Build.dll:token 0x600174c+0x8
+   --- End of inner exception stack trace ---
+   at Microsoft.Build.Exceptions.InternalLoggerException.Throw(Exception innerException, BuildEventArgs e, String messageResourceName, Boolean initializationException, String[] messageArgs) in Microsoft.Build.dll:token 0x600004a+0x26
+   at Microsoft.Build.BackEnd.Logging.EventSourceSink.RaiseErrorEvent(Object sender, BuildErrorEventArgs buildEvent) in Microsoft.Build.dll:token 0x600174c+0x26
+   at Microsoft.Build.BackEnd.Logging.EventSourceSink.Consume(BuildEventArgs buildEvent, Int32 sinkId) in Microsoft.Build.dll:token 0x6001747+0x0
+   at Microsoft.Build.BackEnd.Logging.EventRedirectorToSink.Microsoft.Build.Framework.IEventRedirector.ForwardEvent(BuildEventArgs buildEvent) in Microsoft.Build.dll:token 0x6001716+0xe
+   at Microsoft.Build.Logging.ConfigurableForwardingLogger.ForwardToCentralLogger(BuildEventArgs e) in Microsoft.Build.dll:token 0x6000530+0x0
+   at Microsoft.Build.Logging.ConfigurableForwardingLogger.ErrorHandler(Object sender, BuildErrorEventArgs e) in Microsoft.Build.dll:token 0x600052b+0x13
+   at Microsoft.Build.BackEnd.Logging.EventSourceSink.RaiseErrorEvent(Object sender, BuildErrorEventArgs buildEvent) in Microsoft.Build.dll:token 0x600174c+0x8
+   --- End of inner exception stack trace ---
+   at Microsoft.Build.Exceptions.InternalLoggerException.Throw(Exception innerException, BuildEventArgs e, String messageResourceName, Boolean initializationException, String[] messageArgs) in Microsoft.Build.dll:token 0x600004a+0x26
+   at Microsoft.Build.BackEnd.Logging.EventSourceSink.RaiseErrorEvent(Object sender, BuildErrorEventArgs buildEvent) in Microsoft.Build.dll:token 0x600174c+0x26
+   at Microsoft.Build.BackEnd.Logging.LoggingService.RouteBuildEvent(BuildEventArgs eventArg) in Microsoft.Build.dll:token 0x60017f0+0xe8
+   at Microsoft.Build.BackEnd.Logging.LoggingService.RouteBuildEvent(Object loggingEvent) in Microsoft.Build.dll:token 0x60017ee+0x1c5
+   at Microsoft.Build.BackEnd.Logging.LoggingService.LoggingEventProcessor(Object loggingEvent) in Microsoft.Build.dll:token 0x60017ed+0x79
+===================

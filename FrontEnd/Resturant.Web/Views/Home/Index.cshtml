@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Resturant.Web.Models.ProductDto>
+<form>
+    <div class="container row">
+        @foreach(var p in Model)
+        {
+
+        <div class="col-4 ">
+            <div class="p-0 my-3 border">
+                <div class="card">
+                    <img src="@p.ImageUrl" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title text-success">@p.Name</h3>
+                        <span class="badge badge-light mb-2 ">@p.CategoryName</span>
+                        <p class="card-text">@Html.Raw(@p.Description)</p>
+                        <div class="row">
+                            <div class="col pt-1">
+                                <span style="font-size:23px;">@string.Format("{0:c}", p.Price)</span>
+                            </div>
+                            <div class="col">
+                                <a asp-action = "Details" asp-route-productId="@p.ProductId" class="btn btn-success form-control">Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+</form>
