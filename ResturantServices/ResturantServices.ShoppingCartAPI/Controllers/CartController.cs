@@ -11,7 +11,7 @@ namespace ResturantServices.ShoppingCartAPI.Controllers
     [Route("api/[controller]")]
     public class CartController : ControllerBase
     {
-        private readonly ICartRepo icarRepo;
+        private readonly ICartRepo icartRepo;
         public CartController(ICartRepo _icartRepo)
         {
             icartRepo = _icartRepo;
@@ -86,7 +86,7 @@ namespace ResturantServices.ShoppingCartAPI.Controllers
         }
         
         [HttpPost("RemoveCart")]
-        public async Task<IActionResult> RemoveCart([FromBody]int carId)
+        public async Task<IActionResult> RemoveCart([FromBody]int cartId)
         {
             
             var response = new ServiceResponse<bool>();

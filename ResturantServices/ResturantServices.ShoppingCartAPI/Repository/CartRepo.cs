@@ -136,15 +136,17 @@ namespace ResturantServices.ShoppingCartAPI.Repository
             {
                var cartHeaderFromDb = await dbContext.CartHeaders.FirstOrDefaultAsync(x =>
                                         x.UserId == userId);
-               if(cartHeaderFromDB != null)
+               if(cartHeaderFromDb != null)
                {
-                   dbContext.CartDetails.RemoveRange(dbContext.CartDetails.Where(x=>
+                    dbContext.CartDetails.RemoveRange(dbContext.CartDetails.Where(x=>
                     x.CartHeaderId == cartHeaderFromDb.CartHeaderId));
                     dbContext.CartHeaders.Remove(cartHeaderFromDb);
-                    dbContext.CartHeaders.SaveChangesAsync();
-                    return response.Data = true;
+                    dbContext.SaveChangesAsync();
+                    response.Data = true;
+                    return response;
                }
-               return response.Data=false;
+                response.Data=false;
+                return response;
             }catch(Exception ex)
             {
                 response.ErrorMessages = new List<string>{ex.Message};
